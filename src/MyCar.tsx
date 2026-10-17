@@ -70,22 +70,6 @@ function distanceBetween(a: Position, b: Position) {
   );
 }
 
-function bearingBetween(a: Position, b: Position) {
-  const rad = (value: number) => (value * Math.PI) / 180;
-  const deg = (value: number) => (value * 180) / Math.PI;
-
-  const lat1 = rad(a.lat);
-  const lat2 = rad(b.lat);
-  const lngDiff = rad(b.lng - a.lng);
-
-  const y = Math.sin(lngDiff) * Math.cos(lat2);
-  const x =
-    Math.cos(lat1) * Math.sin(lat2) -
-    Math.sin(lat1) * Math.cos(lat2) * Math.cos(lngDiff);
-
-  return (deg(Math.atan2(y, x)) + 360) % 360;
-}
-
 function formatDistance(metres: number) {
   if (metres < 1000) return `${Math.round(metres)} m`;
   return `${(metres / 1000).toFixed(2)} km`;
