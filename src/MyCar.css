@@ -1,0 +1,758 @@
+.mycar {
+  --mycar-bg: #f7f7f5;
+  --mycar-card: #ffffff;
+  --mycar-text: #20221f;
+  --mycar-muted: #777b75;
+  --mycar-accent: #111111;
+  --mycar-line: #e6e7e2;
+
+  background: var(--mycar-bg);
+  color: var(--mycar-text);
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.mycar *,
+.mycar *::before,
+.mycar *::after {
+  box-sizing: border-box;
+}
+
+.mycar-header {
+  flex-shrink: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--mycar-line);
+  background: var(--mycar-card);
+}
+
+.mycar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.mycar-brand-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: #111111;
+  color: white;
+}
+
+.mycar-muted,
+.mycar-saved-time {
+  color: var(--mycar-muted);
+  font-weight: 400;
+}
+
+.mycar-icon-button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--mycar-line);
+  border-radius: 13px;
+  background: var(--mycar-card);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.mycar-icon-button:hover {
+  background: #f0f0ee;
+}
+
+.mycar-header-spacer {
+  width: 42px;
+}
+
+.mycar-save-view {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  width: min(100% - 36px, 490px);
+  margin: 0 auto;
+  padding: clamp(20px, 5vh, 48px) 0 24px;
+}
+
+.mycar-intro {
+  margin-bottom: 25px;
+}
+
+.mycar-eyebrow {
+  display: block;
+  color: var(--mycar-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mycar-intro h1 {
+  margin: 11px 0 9px;
+  font-size: clamp(27px, 5vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.mycar-intro p,
+.mycar-form-card > p {
+  color: var(--mycar-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.mycar-form-card,
+.mycar-card {
+  border: 1px solid var(--mycar-line);
+  background: var(--mycar-card);
+  border-radius: 20px;
+  padding: 23px;
+}
+
+.mycar-form-icon,
+.mycar-card-icon {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  background: #f0f0ee;
+  color: #111111;
+  border-radius: 15px;
+  margin-bottom: 18px;
+}
+
+.mycar-form-card h2,
+.mycar-card h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  letter-spacing: -0.025em;
+}
+
+.mycar-form-card label {
+  display: block;
+  margin: 22px 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.mycar-form-card input {
+  width: 100%;
+  height: 48px;
+  padding: 0 13px;
+  border: 1px solid var(--mycar-line);
+  border-radius: 12px;
+  background: var(--mycar-bg);
+  color: var(--mycar-text);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.mycar-form-card input:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px #11111112;
+}
+
+.mycar-primary,
+.mycar-secondary,
+.mycar-found-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  width: 100%;
+  border-radius: 14px;
+  padding: 13px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.mycar-primary {
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+}
+
+.mycar-primary:hover:not(:disabled) {
+  background: #303030;
+  border-color: #303030;
+}
+
+.mycar-primary:active,
+.mycar-secondary:active,
+.mycar-found-button:active {
+  transform: scale(0.985);
+}
+
+.mycar-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.mycar-primary:focus-visible,
+.mycar-secondary:focus-visible,
+.mycar-found-button:focus-visible,
+.mycar-bottom-nav button:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+}
+
+.mycar-form-card .mycar-primary {
+  margin-top: 15px;
+}
+
+.mycar-locate-button {
+  margin-top: 17px;
+  min-height: 56px;
+  font-size: 15px;
+}
+
+.mycar-secondary {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid var(--mycar-line);
+  color: inherit;
+}
+
+.mycar-secondary:hover {
+  background: #eeeeeb;
+  border-color: #d4d5cf;
+}
+
+.mycar-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 19px;
+}
+
+.mycar-card-icon {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.mycar-card-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.mycar-card-copy h2 {
+  margin-top: 8px;
+}
+
+.mycar-card-copy p {
+  overflow-wrap: anywhere;
+  color: var(--mycar-muted);
+  font-size: 12px;
+}
+
+.mycar-check {
+  color: #20221f;
+  flex-shrink: 0;
+}
+
+.mycar-floor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mycar-saved-time {
+  display: block;
+  font-size: 11px;
+}
+
+.mycar-privacy {
+  color: var(--mycar-muted);
+  text-align: center;
+  font-size: 11px;
+  margin-top: 24px;
+}
+
+.mycar-error {
+  color: #b42318;
+  background: #fff0ee;
+  border: 1px solid #f5d0cc;
+  border-radius: 12px;
+  padding: 11px 13px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mycar-finding {
+  --mycar-bg: #111111;
+  --mycar-card: #1d1d1d;
+  --mycar-text: #f5f5f5;
+  --mycar-muted: #aaaaaa;
+  --mycar-accent: #ffffff;
+  --mycar-line: #333333;
+
+  background: radial-gradient(ellipse at 50% 40%, #292929 0%, #111111 65%);
+  color: var(--mycar-text);
+}
+
+.mycar-finding .mycar-header {
+  background: #151515;
+  border-color: #333333;
+}
+
+.mycar-finding .mycar-brand-icon {
+  background: #ffffff;
+  color: #111111;
+}
+
+.mycar-finding .mycar-icon-button {
+  background: #1d1d1d;
+  color: white;
+  border-color: #333333;
+}
+
+.mycar-finding .mycar-icon-button:hover {
+  background: #303030;
+}
+
+.mycar-finding-view {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100% - 32px, 490px);
+  margin: 0 auto;
+  padding: clamp(8px, 2vh, 20px) 0 16px;
+}
+
+.mycar-finding-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  color: #b8b8b8;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+}
+
+.mycar-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ffffff55;
+}
+
+.mycar-live-line {
+  width: 24px;
+  height: 1px;
+  background: #606060;
+}
+
+.mycar-distance {
+  text-align: center;
+  margin: clamp(10px, 2vh, 20px) 0 0;
+  flex-shrink: 0;
+}
+
+.mycar-distance > span {
+  display: block;
+  color: #b8b8b8;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.mycar-distance strong {
+  display: block;
+  font-size: clamp(39px, 8vh, 65px);
+  font-weight: 550;
+  line-height: 1.15;
+  letter-spacing: -0.06em;
+  margin: 5px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.mycar-distance p {
+  margin: 0;
+  color: #b8b8b8;
+  font-size: 12px;
+}
+
+.mycar-radar {
+  position: relative;
+  width: min(54vw, 260px);
+  max-width: 260px;
+  aspect-ratio: 1;
+  flex-shrink: 1;
+  min-height: 0;
+  max-height: 29vh;
+  margin: clamp(8px, 1.8vh, 18px) 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #303030 0%, #222222 55%, #171717 100%);
+  border: 1px solid #515151;
+  box-shadow:
+    0 0 45px #ffffff08,
+    inset 0 0 35px #00000025;
+}
+
+.mycar-radar-ring,
+.mycar-radar-cross {
+  position: absolute;
+  pointer-events: none;
+}
+
+.mycar-radar-ring {
+  border: 1px solid #ffffff20;
+  border-radius: 50%;
+  inset: 15%;
+}
+
+.mycar-radar-ring.ring-two {
+  inset: 30%;
+}
+
+.mycar-radar-ring.ring-three {
+  inset: 44%;
+}
+
+.mycar-radar-cross {
+  background: #ffffff18;
+}
+
+.cross-horizontal {
+  height: 1px;
+  left: 5%;
+  right: 5%;
+  top: 50%;
+}
+
+.cross-vertical {
+  width: 1px;
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+}
+
+.mycar-radar-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #303030;
+  color: #ffffff;
+}
+
+.mycar-direction {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  transform-origin: center;
+  filter: drop-shadow(0 0 12px #ffffff25);
+  transition: transform 300ms ease-out;
+}
+
+.mycar-car-pin {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  color: #111111;
+  background: #ffffff;
+}
+
+.mycar-location-status {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #383838;
+  border-radius: 14px;
+  background: #1d1d1d;
+}
+
+.mycar-status-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #303030;
+  color: #ffffff;
+}
+
+.mycar-status-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.mycar-status-copy strong {
+  font-size: 12px;
+}
+
+.mycar-status-copy span {
+  color: #b8b8b8;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.mycar-floor-banner {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 2px 0;
+  font-size: 12px;
+  color: #d0d0d0;
+}
+
+.mycar-floor-banner strong {
+  margin-left: auto;
+  color: #ffffff;
+}
+
+.mycar-accuracy {
+  margin: 7px 0 0;
+  color: #aaaaaa;
+  font-size: 10px;
+}
+
+.mycar-finding .mycar-error {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.mycar-finding-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  flex-shrink: 0;
+}
+
+.mycar-finding-actions .mycar-primary {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+  min-width: 0;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.mycar-finding-actions .mycar-primary:hover {
+  background: #eaeaea;
+}
+
+.mycar-found-button {
+  min-width: 0;
+  padding: 10px;
+  font-size: 12px;
+  color: #ffffff;
+  background: #242424;
+  border: 1px solid #484848;
+}
+
+.mycar-found-button:hover {
+  background: #333333;
+}
+
+.mycar-bottom-nav {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--mycar-line);
+  background: var(--mycar-card);
+}
+
+.mycar-bottom-nav button {
+  min-width: 0;
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 3px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: transparent;
+  color: var(--mycar-muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 550;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.mycar-bottom-nav button:hover {
+  background: #f0f0ee;
+  color: #111111;
+}
+
+.mycar-bottom-nav button.active {
+  background: #111111;
+  color: #ffffff;
+}
+
+.mycar-bottom-nav button.active:hover {
+  background: #303030;
+  color: #ffffff;
+}
+
+.mycar-finding .mycar-bottom-nav {
+  background: #151515;
+  border-top-color: #333333;
+}
+
+.mycar-finding .mycar-bottom-nav button {
+  color: #aaaaaa;
+}
+
+.mycar-finding .mycar-bottom-nav button:hover {
+  background: #292929;
+  color: #ffffff;
+}
+
+.mycar-finding .mycar-bottom-nav button.active {
+  background: #ffffff;
+  color: #111111;
+}
+
+.mycar-finding .mycar-bottom-nav button.active:hover {
+  background: #eaeaea;
+  color: #111111;
+}
+
+@media (max-height: 680px) {
+  .mycar-header {
+    height: 52px;
+  }
+
+  .mycar-finding-view {
+    padding-top: 7px;
+  }
+
+  .mycar-distance {
+    margin-top: 7px;
+  }
+
+  .mycar-distance strong {
+    font-size: 36px;
+  }
+
+  .mycar-radar {
+    width: min(42vw, 190px);
+    max-height: 23vh;
+    margin: 7px 0;
+  }
+
+  .mycar-location-status {
+    padding: 8px 10px;
+  }
+
+  .mycar-bottom-nav button {
+    min-height: 49px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mycar-header {
+    padding: 0 13px;
+  }
+
+  .mycar-bottom-nav {
+    gap: 2px;
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  .mycar-bottom-nav button {
+    font-size: 10px;
+  }
+
+  .mycar-finding-actions {
+    gap: 7px;
+  }
+
+  .mycar-finding-actions .mycar-primary,
+  .mycar-found-button {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mycar *,
+  .mycar *::before,
+  .mycar *::after {
+    transition: none !important;
+  }
+}
