@@ -7,7 +7,6 @@ import {
   Layers,
   LocateFixed,
   MapPin,
-  Navigation,
   Trash2,
   Map as MapIcon,
   CarFront,
