@@ -94,6 +94,7 @@ function formatDistance(metres: number) {
 
 export default function MyCar({ onBack }: MyCarProps) {
   const [parking, setParking] = useState<SavedParking | null>(readParking);
+  const [, forceRefresh] = useState(0);
   const [floor, setFloor] = useState("");
   const [current, setCurrent] = useState<Position | null>(null);
   const [heading, setHeading] = useState<number | null>(null);
@@ -228,7 +229,15 @@ export default function MyCar({ onBack }: MyCarProps) {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
   }, [locating, parking]);
+  useEffect(() => {
+    if (!locating) return;
 
+    const intervalId = window.setInterval(() => {
+      forceRefresh((value) => value + 1);
+    }, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, [locating]);
   function clearParking() {
     try {
       localStorage.removeItem(STORAGE_KEY);
