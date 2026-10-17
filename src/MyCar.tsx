@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   ArrowLeft,
-  ArrowUp,
   Check,
   Compass,
   Layers,
@@ -262,11 +261,6 @@ export default function MyCar({ onBack }: MyCarProps) {
   const distance =
     current && parking ? distanceBetween(current, parking) : null;
 
-  const bearing = current && parking ? bearingBetween(current, parking) : null;
-
-  const arrowRotation =
-    bearing !== null && heading !== null ? bearing - heading : (bearing ?? 0);
-
   const arrived = distance !== null && distance < 10;
 
   return (
@@ -448,15 +442,7 @@ export default function MyCar({ onBack }: MyCarProps) {
               <LocateFixed size={21} />
             </div>
 
-            <div
-              className="mycar-direction"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${arrowRotation}deg)`,
-              }}
-            >
-              <ArrowUp size={78} strokeWidth={1.8} />
-            </div>
-
+            <div className={`mycar-radar-sweep ${arrived ? "near-car" : ""}`} />
             <div className="mycar-car-pin">
               <CarFront size={21} />
             </div>

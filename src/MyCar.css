@@ -756,3 +756,54 @@
     transition: none !important;
   }
 }
+.mycar-radar {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.mycar-radar-sweep {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 285deg,
+    rgb(60 210 160 / 0%) 315deg,
+    rgb(60 210 160 / 35%) 360deg
+  );
+  animation: mycar-radar-rotate 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mycar-radar-center,
+.mycar-car-pin {
+  z-index: 2;
+}
+
+.mycar-radar-sweep.near-car {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 285deg,
+    rgb(60 210 160 / 0%) 315deg,
+    rgb(60 210 160 / 50%) 360deg
+  );
+}
+
+@keyframes mycar-radar-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mycar-radar-sweep {
+    animation: none;
+  }
+}
