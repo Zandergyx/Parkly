@@ -1,4 +1,4 @@
-# Parkly 🅿
+# Parkly 
 
 **Parking, made simpler.**
 
